@@ -5,8 +5,6 @@ import lk.ijse.orm.hibernate.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.IOException;
-
 public class Main {
 
     public static void main(String[] args) {

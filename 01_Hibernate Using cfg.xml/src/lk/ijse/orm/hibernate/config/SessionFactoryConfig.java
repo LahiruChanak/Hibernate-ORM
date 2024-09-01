@@ -15,11 +15,15 @@ public class SessionFactoryConfig {
 
     private SessionFactoryConfig(){}
 
+        /* Singleton the class to avoid object recreation. */
     public static SessionFactoryConfig getInstance() {
         return (factoryConfig == null) ? factoryConfig = new SessionFactoryConfig() : factoryConfig;
     }
 
+        /*  Get Session Object */
     public Session getSession() {
+        /* 3 Steps of native Bootstrapping. */
+
         // Step 01 - Create StandardServiceRegistry Object
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 

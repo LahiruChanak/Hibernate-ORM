@@ -7,6 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "customer")
+    /* We can define the @Entity and @Table(name = "customer") OR @Entity(name = "customer") without @Table */
 public class Customer {
 
     @Id

@@ -22,8 +22,6 @@ public class SessionFactoryConfig {
 
     public Session getSession() throws IOException {
         // Step 01 - Create StandardServiceRegistry Object
-
-
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .loadProperties("hibernate.properties").build();
 

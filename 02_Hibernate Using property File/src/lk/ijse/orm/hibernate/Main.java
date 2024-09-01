@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         Customer customer = new Customer();
-        customer.setId(2);
+        customer.setId(1);
         customer.setName("Kamal");
         customer.setAddress("Galle");
         customer.setSalary(25000.00);

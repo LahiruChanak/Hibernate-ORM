@@ -20,7 +20,7 @@ public class SessionFactoryConfig {
         return (factoryConfig == null) ? factoryConfig = new SessionFactoryConfig() : factoryConfig;
     }
 
-    public Session getSession() throws IOException {
+    public Session getSession() {
         // Step 01 - Create StandardServiceRegistry Object
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .loadProperties("hibernate.properties").build();

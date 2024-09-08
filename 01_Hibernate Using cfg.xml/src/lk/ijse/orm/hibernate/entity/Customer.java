@@ -1,16 +1,17 @@
 package lk.ijse.orm.hibernate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GeneratorType;
 
+import javax.persistence.*;
+
+/* We can define the @Entity and @Table(name = "customer") OR @Entity(name = "customer") without @Table */
 @Entity
 @Table (name = "customer")
-    /* We can define the @Entity and @Table(name = "customer") OR @Entity(name = "customer") without @Table */
 public class Customer {
 
-    @Id
+    @Id // Tells hibernate this is the primary key of the table
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "customer_id")
     private int id;
 
@@ -65,5 +66,14 @@ public class Customer {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 
 }

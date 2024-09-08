@@ -22,7 +22,7 @@
 
     <!--Defining for Hibernate that what kind of style we need to auto update the database structure
     Ex: hbm2ddl.auto types: update, create, create-drop, validate-->
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
 
     <!--Defining for Hibernate that what's the dialect we're using in our project-->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>

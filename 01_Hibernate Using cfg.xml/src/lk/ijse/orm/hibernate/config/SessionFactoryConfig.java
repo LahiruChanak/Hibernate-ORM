@@ -1,11 +1,12 @@
 package lk.ijse.orm.hibernate.config;
 
 import lk.ijse.orm.hibernate.entity.Customer;
+import lk.ijse.orm.hibernate.entity.Item;
+import lk.ijse.orm.hibernate.entity.Order;
+import lk.ijse.orm.hibernate.entity.OrderDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -26,9 +27,10 @@ public class SessionFactoryConfig {
         // Step 03 - Create SessionFactory Object
         sessionFactory = new MetadataSources(new StandardServiceRegistryBuilder().configure().build())
                 .addAnnotatedClass(Customer.class)
+                .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(Item.class)
+                .addAnnotatedClass(OrderDetail.class)
                 .getMetadataBuilder().build().buildSessionFactory();
-
-        new Configuration().configure().addAnnotatedClass(Customer.class);
     }
 
     /* Singleton the class to avoid object recreation. */

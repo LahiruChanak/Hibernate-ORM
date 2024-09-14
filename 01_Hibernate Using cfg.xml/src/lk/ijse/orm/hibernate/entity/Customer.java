@@ -1,17 +1,15 @@
 package lk.ijse.orm.hibernate.entity;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-/* We can define the @Entity and @Table(name = "customer") OR @Entity(name = "customer") without @Table */
 @Entity
-@Table (name = "customer")
-public class Customer {
+@Table (name = "Customer")
+public class Customer { // Customer main character, Order is a object character
 
-    @Id // Tells hibernate this is the primary key of the table
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "customer_id")
     private int id;
 
@@ -21,17 +19,16 @@ public class Customer {
     @Column (name = "customer_address")
     private String address;
 
-    @Column (name = "customer_salary")
-    private double salary;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")  // mappedBy = "customer" => Which name Customer is in Order class
+    private List<Order> orders = new ArrayList<>();
 
-    public Customer() {
-    }
+    public Customer() {}
 
-    public Customer(int id, String name, String address, double salary) {
+    public Customer(int id, String name, String address, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.salary = salary;
+        this.orders = orders;
     }
 
     public int getId() {
@@ -58,12 +55,12 @@ public class Customer {
         this.address = address;
     }
 
-    public double getSalary() {
-        return salary;
+    public List<Order> getOrders() {
+        return orders;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
@@ -72,8 +69,7 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
-                ", salary=" + salary +
+                ", orders=" + orders +
                 '}';
     }
-
 }

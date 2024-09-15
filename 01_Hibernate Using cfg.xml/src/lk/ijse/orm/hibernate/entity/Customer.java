@@ -19,6 +19,7 @@ public class Customer { // Customer main character, Order is a object character
     @Column (name = "customer_address")
     private String address;
 
+            //There are two FetchTypes available, EAGER and LAZY
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "customer")  // mappedBy = "customer" => Which name Customer is in Order class
     private List<Order> orders = new ArrayList<>();
 
